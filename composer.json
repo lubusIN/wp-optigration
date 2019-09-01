@@ -1,0 +1,49 @@
+{
+    "name": "lubusin/wp-optigration",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "description": "Script optimization",
+    "homepage": "https://munim.com",
+    "require": {
+        "composer/installers": "~1.2"
+    },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "*",
+        "squizlabs/php_codesniffer": "*",
+        "wp-coding-standards/wpcs": "*",
+        "phpcompatibility/phpcompatibility-wp": "*"
+    },
+    "keywords": [
+      "wordpress",
+      "plugin",
+          "integration",
+          "scripts",
+          "optimization"
+    ],
+    "support": {
+      "issues": "https://github.com/lubusIN/wp-optigration/"
+      },
+      "autoload": {
+          "classmap": [
+              "includes/"
+          ],
+          "files": [
+              "includes/functions.php"
+          ]
+      },
+    "scripts": {
+      "phpcs": [
+        "phpcs -s -p ."
+      ],
+      "phpcbf": [
+        "phpcbf -p ."
+      ]
+    },
+    "extra": {
+      "scripts-description": {
+            "phpcs": "Analyze code against the WordPress coding standards with PHP_CodeSniffer",
+            "phpcbf": "Fix coding standards warnings/errors automatically with PHP Code Beautifier"
+        }
+    }
+  }
+  
