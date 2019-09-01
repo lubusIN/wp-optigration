@@ -47,6 +47,9 @@ if ( ! defined( 'OPTIGRATION_PLUGIN_BASENAME' ) ) {
 	define( 'OPTIGRATION_PLUGIN_BASENAME', plugin_basename( OPTIGRATION_PLUGIN_FILE ) );
 }
 
+// Autoloader.
+require_once 'vendor/autoload.php';
+
 // Bootstrap Optigration.
 use LubusIN\Optigration\Optigration;
 

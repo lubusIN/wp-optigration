@@ -2,7 +2,7 @@ const mix = require('laravel-mix');
 require('mix-tailwindcss');
 require('laravel-mix-purgecss');
 
-mix.postCss('src/css/style.css', 'assets/css')
+mix.postCss('src/style.css', 'assets')
    .tailwind();
 
 if (mix.inProduction()) {
