@@ -5,6 +5,8 @@ require('laravel-mix-purgecss');
 mix.postCss('src/style.css', 'assets')
    .tailwind();
 
+mix.react('src/app.js', 'assets');
+
 if (mix.inProduction()) {
 	mix.purgeCss({
 		folders: ['includes'],

@@ -5,8 +5,16 @@
   "repository": "git@github.com:lubusin/wp-optigration.git",
   "author": "Ajit Bohra <ajit@lubus.in>",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "@wordpress/components": "^8.2.0",
+    "@wordpress/data": "^4.8.0",
+    "@wordpress/i18n": "^3.6.0",
+    "@wordpress/nux": "^3.6.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
   "devDependencies": {
+    "@babel/preset-react": "^7.0.0",
     "cross-env": "^5.2.0",
     "laravel-mix": "^4.0.16",
     "laravel-mix-purgecss": "^4.1.0",

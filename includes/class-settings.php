@@ -31,10 +31,20 @@ class Settings {
 
     /**
 	 * Register Scripts.
-     * 
+     *
      * @return void
 	 */
 	public static function register_assets() {
+		// Scripts
+		wp_register_script(
+			'optigration',
+			OPTIGRATION_PLUGIN_URL . 'assets/app.js',
+			[],
+			filemtime( OPTIGRATION_PLUGIN_DIR . 'assets/app.js' ),
+			true
+		);
+		wp_enqueue_script( 'optigration' );
+
         // Styles.
 		wp_register_style(
 			'optigration-style',
@@ -44,26 +54,26 @@ class Settings {
 		);
 		wp_enqueue_style( 'optigration-style' );
     }
-    
+
     /**
      * Add settings menu to WP settings.
-     * 
+     *
      * @return void
      */
     public static function add_menu() {
-        add_submenu_page( 
-            'options-general.php', 
-            __( 'Optigration' , 'optigration' ), 
-            __( 'Optigration' , 'optigration' ), 
-            'manage_options', 
-            'optigration', 
-            [ __CLASS__, 'render_page' ] 
+        add_submenu_page(
+            'options-general.php',
+            __( 'Optigration' , 'optigration' ),
+            __( 'Optigration' , 'optigration' ),
+            'manage_options',
+            'optigration',
+            [ __CLASS__, 'render_page' ]
         );
     }
 
     /**
      * Render settings page
-     * 
+     *
      * @return void
      */
     public static function render_page() {
@@ -72,7 +82,7 @@ class Settings {
 
     /**
      * Register settings
-     * 
+     *
      * @return void
      */
     public static function register_settings() {
@@ -100,7 +110,7 @@ class Settings {
 
     /**
      * Render: setting section.
-     * 
+     *
      * @return void
      */
     public static function render_section() {
@@ -113,11 +123,11 @@ class Settings {
     public static function render_scripts_field() {
         $options = get_option( 'optigration' );
         ?>
-        <textarea 
-            class="w-full" 
-            name='optigration[scripts]' 
-            id="optigration_scripts" 
-            cols="40" 
+        <textarea
+            class="w-full"
+            name='optigration[scripts]'
+            id="optigration_scripts"
+            cols="40"
             rows="15"><?php echo esc_attr( $options['scripts'] ); ?></textarea>
         <?php
     }
