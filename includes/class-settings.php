@@ -35,6 +35,14 @@ class Settings {
      * @return void
 	 */
 	public static function register_assets() {
+		// Bailout of not on plugin page(s).
+		$screen = get_current_screen();
+		$plugin_pages = [ 'settings_page_optigration' ];
+
+		if ( ! in_array( $screen->id , $plugin_pages ) ) {
+			return;
+		}
+
 		// Scripts
 		wp_register_script(
 			'optigration-manifest',
