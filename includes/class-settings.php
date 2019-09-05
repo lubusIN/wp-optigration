@@ -37,9 +37,27 @@ class Settings {
 	public static function register_assets() {
 		// Scripts
 		wp_register_script(
+			'optigration-manifest',
+			OPTIGRATION_PLUGIN_URL . 'assets/manifest.js',
+			[],
+			filemtime( OPTIGRATION_PLUGIN_DIR . 'assets/manifest.js' ),
+			true
+		);
+		wp_enqueue_script( 'optigration-manifest' );
+
+		wp_register_script(
+			'optigration-vendor',
+			OPTIGRATION_PLUGIN_URL . 'assets/vendor.js',
+			['optigration-manifest'],
+			filemtime( OPTIGRATION_PLUGIN_DIR . 'assets/vendor.js' ),
+			true
+		);
+		wp_enqueue_script( 'optigration-vendor' );
+
+		wp_register_script(
 			'optigration',
 			OPTIGRATION_PLUGIN_URL . 'assets/app.js',
-			[],
+			['optigration-vendor'],
 			filemtime( OPTIGRATION_PLUGIN_DIR . 'assets/app.js' ),
 			true
 		);

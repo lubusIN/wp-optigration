@@ -7,8 +7,10 @@ mix.postCss('src/style.css', 'assets')
 
 mix.react('src/app.js', 'assets');
 
+mix.extract();
+
 if (mix.inProduction()) {
 	mix.purgeCss({
-		folders: ['includes'],
+		folders: ['includes', 'src'],
 	});
 }

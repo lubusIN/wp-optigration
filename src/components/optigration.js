@@ -7,16 +7,21 @@ import React,{ useContext }  from "react";
  * Internal dependencies.
  */
 import { OptigrationContext, OptigrationProvider } from "../data/context";
+import ErrorBoundry from './error-boundry';
+import PageTitle from './page-title';
+import Settings from './settings';
 
 /**
  * Render Optigration Component.
  */
 const Optigration = () => {
-	const context = useContext( OptigrationContext );
 	return(
-		<OptigrationProvider>
-			<h1>yes</h1>
-		</OptigrationProvider>
+		<ErrorBoundry>
+			<OptigrationProvider>
+				<PageTitle/>
+				<Settings/>
+			</OptigrationProvider>
+		</ErrorBoundry>
 	);
 };
 

@@ -44,12 +44,14 @@ export function OptigrationProvider({ children }) {
 		setSettings( newSettings );
 	}, []);
 
-	return <OptigrationContext.Provider
+	return(
+			<OptigrationContext.Provider
 				value={{
 					settings: settings,
 					update: setSettings,
 				}}
 			>
 				{children}
-			</OptigrationContext.Provider>;
+			</OptigrationContext.Provider>
+	);
 };

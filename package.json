@@ -7,9 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "@wordpress/components": "^8.2.0",
-    "@wordpress/data": "^4.8.0",
     "@wordpress/i18n": "^3.6.0",
-    "@wordpress/nux": "^3.6.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },
