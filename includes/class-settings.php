@@ -26,7 +26,6 @@ class Settings {
         // Setup
         add_action( 'admin_enqueue_scripts', [ __CLASS__, 'register_assets' ] );
         add_action( 'admin_menu', [ __CLASS__, 'add_menu'] );
-        add_action( 'admin_init', [ __CLASS__, 'register_settings'] );
     }
 
     /**
@@ -104,57 +103,5 @@ class Settings {
      */
     public static function render_page() {
         require_once 'views/settings.php';
-    }
-
-    /**
-     * Register settings
-     *
-     * @return void
-     */
-    public static function register_settings() {
-        // Register setting.
-        register_setting( 'optigration', 'optigration' );
-
-        // Register section.
-        add_settings_section(
-            'optigration_section',
-            null,
-            [ __CLASS__, 'render_section' ],
-            'optigration'
-        );
-
-        // Register fields.
-        // Field: scripts.
-        add_settings_field(
-            'scripts',
-            __( 'Script Integration', 'optigration' ),
-            [ __CLASS__, 'render_scripts_field' ],
-            'optigration',
-            'optigration_section'
-        );
-    }
-
-    /**
-     * Render: setting section.
-     *
-     * @return void
-     */
-    public static function render_section() {
-        return;
-    }
-
-    /**
-     * Render: scripts field.
-     */
-    public static function render_scripts_field() {
-        $options = get_option( 'optigration' );
-        ?>
-        <textarea
-            class="w-full"
-            name='optigration[scripts]'
-            id="optigration_scripts"
-            cols="40"
-            rows="15"><?php echo esc_attr( $options['scripts'] ); ?></textarea>
-        <?php
     }
 }
