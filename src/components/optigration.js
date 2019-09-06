@@ -10,6 +10,7 @@ import { OptigrationContext, OptigrationProvider } from "../data/context";
 import ErrorBoundry from './error-boundry';
 import PageTitle from './page-title';
 import Settings from './settings';
+import "@wordpress/components/build-style/style.css";
 
 /**
  * Render Optigration Component.

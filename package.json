@@ -7,12 +7,14 @@
   "license": "MIT",
   "dependencies": {
     "@wordpress/components": "^8.2.0",
+    "@wordpress/compose": "^3.6.0",
     "@wordpress/i18n": "^3.6.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.0.0",
+    "@tailwindcss/custom-forms": "^0.2.1",
     "browser-sync": "^2.26.7",
     "browser-sync-webpack-plugin": "2.0.1",
     "cross-env": "^5.2.0",

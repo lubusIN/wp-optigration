@@ -2,7 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+/* WordPress Core Conflicts */
 .wp-menu-image img{
     border-style: none;
     display: initial;
+}
+
+/* WP Components */
+.components-base-control__help {
+	@apply text-gray-500;
+}
+
+.components-text-control__input {
+	@apply form-input;
+}
+
+.components-textarea-control__input {
+	@apply form-textarea;
+}
+.components-modal__frame {
+	@apply rounded;
+}
+
+.components-modal__header {
+	@apply bg-gray-200 border-b-0 !important;
 }
