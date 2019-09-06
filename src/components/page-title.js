@@ -19,7 +19,7 @@ import { PluginIcon } from './icons';
 const PageTitle = () => {
 	return(
 			<h1 className="flex content-center">
-				<PluginIcon className="w-8 fill-current mr-2"/>
+				<PluginIcon className="w-8 fill-current mr-2 mb-4"/>
 				{ __( 'Optigration', 'optigration') }
 			</h1>
 	);

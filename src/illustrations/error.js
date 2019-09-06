@@ -6,7 +6,7 @@ import React from "react";
 /**
  * WordPress dependencies.
  */
-import { G, Path, SVG } from '@wordpress/components';
+import { Path, SVG } from '@wordpress/components';
 
 /**
  * Illustration.

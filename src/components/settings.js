@@ -3,10 +3,16 @@
  */
 import React,{ useContext }  from "react";
 
+/**
+ * WordPress dependencies.
+ */
+import { Fragment } from "@wordpress/element";
+
 /***
  * Internal dependencies.
  */
 import { OptigrationContext } from "../data/context";
+import Empty from "./empty";
 
 /**
  * Render Settings Component.
@@ -14,10 +20,11 @@ import { OptigrationContext } from "../data/context";
 const Settings = () => {
 	const context = useContext( OptigrationContext );
 	return(
-		<div>
-			Settings Panel
-			<h2>{ context.settings.options.footer }</h2>
-		</div>
+		<Fragment>
+			<div className="flex justify-center">
+				<Empty  />
+			</div>
+		</Fragment>
 	);
 };
 

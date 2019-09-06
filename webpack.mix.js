@@ -9,6 +9,8 @@ mix.react('src/app.js', 'assets');
 
 mix.extract();
 
+mix.disableNotifications();
+
 if (mix.inProduction()) {
 	mix.purgeCss({
 		folders: ['includes', 'src'],
