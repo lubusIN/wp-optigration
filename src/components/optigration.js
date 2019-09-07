@@ -1,16 +1,15 @@
 /**
- * External dependencies.
+ * WordPres dependencies.
  */
-import React,{ useContext }  from "react";
+import { useContext }  from "@wordpress/element";
 
 /***
  * Internal dependencies.
  */
-import { OptigrationContext, OptigrationProvider } from "../data/context";
+import { OptigrationProvider } from "../data/context";
 import ErrorBoundry from './error-boundry';
 import PageTitle from './page-title';
 import Settings from './settings';
-import "@wordpress/components/build-style/style.css";
 
 /**
  * Render Optigration Component.

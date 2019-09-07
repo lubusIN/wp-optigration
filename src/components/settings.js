@@ -1,9 +1,4 @@
 /**
- * External dependencies.
- */
-import React from "react";
-
-/**
  * WordPress dependencies.
  */
 import { Fragment } from "@wordpress/element";

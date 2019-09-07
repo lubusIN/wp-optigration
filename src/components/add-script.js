@@ -1,11 +1,7 @@
 /**
- * External dependencies.
- */
-import React,{ useContext }  from "react";
-
-/**
  * WordPress dependencies.
  */
+import { useContext } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { Button, Modal, TextControl, TextareaControl } from '@wordpress/components';
 import { withState } from '@wordpress/compose';
@@ -34,6 +30,7 @@ const AddScript = withState( {
         { isOpen && (
             <Modal
 				title="Add script"
+				className="rounded-lg shadow-2xl"
                 onRequestClose={ () => setState( { isOpen: false } ) }>
 
 				<TextControl
@@ -51,15 +48,16 @@ const AddScript = withState( {
 				/>
 
 				<TextareaControl
+					className="mb-6"
 					label="Code"
 					help="inline javascript for integration"
 				/>
 
-				<div className="flex justify-end bg-gray-200 py-4 px-6 mt-10 -mx-6 -mb-6">
+				<div className="flex justify-end bg-gray-200 py-4 px-6 -mx-4 -mb-4">
 					<Button isDefault onClick={ () => setState( { isOpen: false } ) }>
 					Cancel
 					</Button>
-					<Button style={ { marginLeft: '10px' } } isPrimary onClick={ () => context.update( { } ) }>
+					<Button className="ml-4" isPrimary onClick={ () => context.update( { } ) }>
 					Add
 					</Button>
 				</div>

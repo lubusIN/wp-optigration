@@ -63,9 +63,15 @@ class Settings {
 
 		wp_register_script(
 			'optigration',
-			OPTIGRATION_PLUGIN_URL . 'assets/app.js',
-			['optigration-vendor'],
-			filemtime( OPTIGRATION_PLUGIN_DIR . 'assets/app.js' ),
+			OPTIGRATION_PLUGIN_URL . 'assets/plugin.js',
+			[
+				'optigration-vendor',
+				'wp-element',
+				'wp-i18n',
+				'wp-compose',
+				'wp-components',
+			],
+			filemtime( OPTIGRATION_PLUGIN_DIR . 'assets/plugin.js' ),
 			true
 		);
 		wp_enqueue_script( 'optigration' );
@@ -74,7 +80,7 @@ class Settings {
 		wp_register_style(
 			'optigration-style',
 			OPTIGRATION_PLUGIN_URL . 'assets/style.css',
-			[],
+			[ 'wp-components' ],
 			filemtime( OPTIGRATION_PLUGIN_DIR . 'assets/style.css' )
 		);
 		wp_enqueue_style( 'optigration-style' );

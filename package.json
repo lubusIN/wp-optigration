@@ -5,13 +5,6 @@
   "repository": "git@github.com:lubusin/wp-optigration.git",
   "author": "Ajit Bohra <ajit@lubus.in>",
   "license": "MIT",
-  "dependencies": {
-    "@wordpress/components": "^8.2.0",
-    "@wordpress/compose": "^3.6.0",
-    "@wordpress/i18n": "^3.6.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
-  },
   "devDependencies": {
     "@babel/preset-react": "^7.0.0",
     "@tailwindcss/custom-forms": "^0.2.1",
@@ -28,7 +21,7 @@
     "serve": "live-server . --host=localhost --port=8080",
     "dev": "yarn run development",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "yarn run development -- --watch",
+    "watch": "yarn run development --watch",
     "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "prod": "yarn run production",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"

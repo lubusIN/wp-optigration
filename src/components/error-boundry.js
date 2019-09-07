@@ -1,7 +1,7 @@
 /**
- * External dependencies.
+ * WordPress dependencies.
  */
-import React  from "react";
+import { Component } from "@wordpress/element";
 
 /**
  * Internal dependencies.
@@ -11,7 +11,7 @@ import {ErrorIllustration} from '../illustrations/error';
 /**
  * Component.
  */
-class ErrorBoundary extends React.Component {
+class ErrorBoundary extends Component {
 	constructor(props) {
 	  super(props);
 	  this.state = { hasError: false };

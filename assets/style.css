@@ -1,3 +1,5 @@
+/* Tailwind */
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
@@ -11667,13 +11669,9 @@ video {
   line-height: 1.5;
 }
 
-.components-modal__frame {
-  border-radius: 0.25rem;
-}
-
 .components-modal__header {
-  background-color: #edf2f7 !important;
-  border-bottom-width: 0 !important;
+  background-color: #edf2f7;
+  border-bottom-width: 0;
 }
 
 @media (min-width: 640px) {
