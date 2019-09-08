@@ -16,6 +16,7 @@ const externals = {
 	'@wordpress/hooks': 'wp.hooks',
 	'@wordpress/i18n': 'wp.i18n',
 	'@wordpress/plugins': 'wp.plugins',
+	'@wordpress/api-fetch': 'wp.apiFetch',
   }
 
 mix.postCss('src/style.css', 'assets')

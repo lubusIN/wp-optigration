@@ -95,6 +95,11 @@ final class Optigration {
      * @return void
      */
     public static function register_settings() {
+		// Default.
+		$default_settings =  [
+			'scripts' => [],
+			'footer'   => 'true',
+		];
         // Register setting.
         register_setting(
 			'optigration',
@@ -103,6 +108,7 @@ final class Optigration {
 				'type'              => 'string',
 				'show_in_rest'      => true,
 				'sanitize_callback' => 'sanitize_text_field',
+				'default'           => json_encode( $default_settings ),
 			]
 		);
     }

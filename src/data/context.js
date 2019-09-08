@@ -2,52 +2,31 @@
  * WordPress dependencies.
  */
 import { useState, useEffect, createContext } from "@wordpress/element";
+import { withSelect } from "@wordpress/data";
+
+/**
+ * Internal dependencies.
+ */
+import './store';
 
 /**
  * Context Component.
  */
 export const OptigrationContext = createContext();
 
-export function OptigrationProvider({ children }) {
-	// Default data for content state.
-	const defaultSettings = {
-		scripts: [
-			{
-				name: "Google Anylatics",
-				script: "https:/google.com/script.js",
-				code: "alert('LUBUS is gone rule !');",
-			},
-		],
-		options: {
-			footer: "true",
-		}
-	}
-
-	// State.
-	const [settings, setSettings] = useState( defaultSettings );
+const OptigrationProvider = ({ children, pluginSettings }) => {
+	// State Hook.
+	const [settings, setSettings] = useState( pluginSettings );
 
 	useEffect(() => {
-		// Load settings from database
-		const newSettings = {
-			scripts: [
-				{
-					name: "Google Anylatics Update",
-					script: "https:/google.com/script.js",
-					code: "alert('LUBUS is gone rule ! Bravo');",
-				},
-			],
-			options: {
-				footer: "false",
-			}
-		}
-
-		setSettings( newSettings );
+		setSettings( pluginSettings );
 	}, []);
 
+	// Render Provider.
 	return(
 			<OptigrationContext.Provider
 				value={{
-					settings: settings,
+					settings,
 					update: setSettings,
 				}}
 			>
@@ -55,3 +34,10 @@ export function OptigrationProvider({ children }) {
 			</OptigrationContext.Provider>
 	);
 };
+
+// Export withSelect for settings from API.
+export default withSelect( ( select ) => {
+	return {
+		pluginSettings: select('optigration').getSettings(),
+	};
+} )( OptigrationProvider );

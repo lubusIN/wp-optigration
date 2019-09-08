@@ -1,12 +1,7 @@
-/**
- * WordPres dependencies.
- */
-import { useContext }  from "@wordpress/element";
-
 /***
  * Internal dependencies.
  */
-import { OptigrationProvider } from "../data/context";
+import OptigrationProvider from "../data/context";
 import ErrorBoundry from './error-boundry';
 import PageTitle from './page-title';
 import Settings from './settings';

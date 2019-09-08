@@ -6,3 +6,4 @@ Experimental WordPress plugin to integrate 3rd party scripts.
 ## Development
 - Clone
 - Run `composr install`
+- Run `yarn && yarn watch`

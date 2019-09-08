@@ -70,6 +70,8 @@ class Settings {
 				'wp-i18n',
 				'wp-compose',
 				'wp-components',
+				'wp-data',
+				'wp-api-fetch',
 			],
 			filemtime( OPTIGRATION_PLUGIN_DIR . 'assets/plugin.js' ),
 			true
