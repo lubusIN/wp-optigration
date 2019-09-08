@@ -3,6 +3,7 @@
  */
 import { __ } from "@wordpress/i18n";
 import { useContext } from "@wordpress/element";
+import { Animate } from "@wordpress/components";
 
 /**
  * Internal dependencies.
@@ -26,7 +27,13 @@ const ScriptList = () => {
 				<div className="flex flex-wrap">
 				{
 					settings.scripts.map( ( script,  index ) => (
-						<ScriptItem key={index} index={index} name={script.name} script={script.script} code={script.code} />
+						<Animate key={index} type="slide-in">
+							{
+								({className}) => (
+									<ScriptItem className={ className } key={index} index={index} name={script.name} script={script.script} code={script.code} />
+								)
+							}
+						</Animate>
 					) )
 				}
 				</div>

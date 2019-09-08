@@ -2,6 +2,7 @@
  * External dependencies.
  */
 import { filter } from 'lodash';
+import classNames from "classnames";
 
 /**
  * WordPress dependencies.
@@ -18,7 +19,7 @@ import { OptigrationContext } from "../data/context";
 /**
  * Render Script Item Component.
  */
-const ScriptItem = ( { index, name, script, code } ) => {
+const ScriptItem = ( { className, index, name, script, code } ) => {
 	const { settings, updateSettings } = useContext( OptigrationContext );
 	const scripts = settings.scripts;
 
@@ -48,7 +49,7 @@ const ScriptItem = ( { index, name, script, code } ) => {
 	};
 
 	return(
-			<div className="w-full pb-6 mb-8 border-b border-solid border-gray-300">
+			<div className={classNames( className, "w-full pb-6 mb-8 border-b border-solid border-gray-300" )}>
 				<div className="flex">
 					<TextControl
 						className="mb-6 w-1/4 mr-4"

@@ -7,6 +7,7 @@ import { isEmpty } from "lodash";
  * WordPress dependencies.
  */
 import { Fragment, useContext } from "@wordpress/element";
+import { Animate } from "@wordpress/components";
 
 /***
  * Internal dependencies.
@@ -24,8 +25,15 @@ const Settings = () => {
 	return(
 		<Fragment>
 			<div className="flex justify-center">
-				{
-					isEmpty( context.settings.scripts ) ?  <Empty  /> : <ScriptList/> }
+				<Animate type="slide-in">
+					{
+						( {className} ) => (
+							isEmpty( context.settings.scripts ) ?
+							<Empty className={ className } /> :
+							<ScriptList />
+						)
+					}
+				</Animate>
 			</div>
 		</Fragment>
 	);
