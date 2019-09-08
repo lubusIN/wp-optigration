@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies.
  */
-import { useContext } from "@wordpress/element";
+import { useContext, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { Button, Modal, TextControl, TextareaControl } from '@wordpress/components';
 import { withState } from '@wordpress/compose';
@@ -17,8 +17,33 @@ import { OptigrationContext } from "../data/context";
 const AddScript = withState( {
     isOpen: false,
 } )( ( { isOpen, setState } ) => {
-	const context = useContext( OptigrationContext );
+	// Destructure object.
+	const { settings, updateSettings } = useContext( OptigrationContext );
+	const scripts = settings.scripts;
 
+	// Field state.
+	const [name, setName] = useState();
+	const [script, setScript] = useState();
+	const [code, setCode] = useState();
+
+	// Add event.
+	const addScript = () => {
+		const scriptItem = {
+			name,
+			script,
+			code
+		};
+
+		scripts.push( scriptItem );
+		updateSettings( (state) => (
+			{
+				...state,
+				scripts
+			} ) );
+		setState( { isOpen: false } );
+	};
+
+	// Render form.
 	return(
     <div>
 		<Button
@@ -34,30 +59,31 @@ const AddScript = withState( {
                 onRequestClose={ () => setState( { isOpen: false } ) }>
 
 				<TextControl
-					required
 					className="mb-6"
 					label="Name"
 					help="integration service"
+					onChange ={ (name) => setName( name ) }
 				/>
 
 				<TextControl
-					required
 					className="mb-6"
 					label="Script (optional)"
 					help="url to external script"
+					onChange ={ (script) => setScript( script ) }
 				/>
 
 				<TextareaControl
 					className="mb-6"
 					label="Code"
 					help="inline javascript for integration"
+					onChange ={ (code) => setCode( code ) }
 				/>
 
 				<div className="flex justify-end bg-gray-200 py-4 px-6 -mx-4 -mb-4">
-					<Button isDefault onClick={ () => setState( { isOpen: false } ) }>
+					<Button isDefault onClick={  () => setState( { isOpen: false } ) }>
 					Cancel
 					</Button>
-					<Button className="ml-4" isPrimary onClick={ () => context.update( { } ) }>
+					<Button className="ml-4" isPrimary onClick={ () => addScript()  }>
 					Add
 					</Button>
 				</div>

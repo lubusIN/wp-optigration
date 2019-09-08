@@ -16,18 +16,18 @@ export const OptigrationContext = createContext();
 
 const OptigrationProvider = ({ children, pluginSettings }) => {
 	// State Hook.
-	const [settings, setSettings] = useState( pluginSettings );
+	const [settings, setSettings] = useState( {} );
 
 	useEffect(() => {
 		setSettings( pluginSettings );
-	}, []);
+	}, [pluginSettings]);
 
 	// Render Provider.
 	return(
 			<OptigrationContext.Provider
 				value={{
 					settings,
-					update: setSettings,
+					updateSettings: setSettings,
 				}}
 			>
 				{children}

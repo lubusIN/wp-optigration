@@ -11669,6 +11669,11 @@ video {
   line-height: 1.5;
 }
 
+.components-text-control__input,
+.components-textarea-control__input {
+  background-color: #f7fafc !important;
+}
+
 .components-modal__header {
   background-color: #edf2f7;
   border-bottom-width: 0;
