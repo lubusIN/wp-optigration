@@ -17,7 +17,7 @@ import AddScript from './add-script';
  * Render PageTitle Component.
  */
 const ScriptList = () => {
-	const { settings } = useContext( OptigrationContext );
+	const { scripts } = useContext( OptigrationContext );
 
 	return(
 			<div className="bg-white flex flex-col w-full border p-8">
@@ -27,7 +27,7 @@ const ScriptList = () => {
 
 				<div className="flex flex-wrap">
 				{
-					settings.scripts.map( ( script,  index ) => (
+					scripts.map( ( script,  index ) => (
 						<Animate key={index} type="slide-in">
 							{
 								({className}) => (

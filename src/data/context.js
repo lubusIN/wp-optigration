@@ -2,7 +2,7 @@
  * WordPress dependencies.
  */
 import { useState, useEffect, createContext } from "@wordpress/element";
-import { withSelect } from "@wordpress/data";
+import apiFetch from '@wordpress/api-fetch';
 
 /**
  * Internal dependencies.
@@ -14,20 +14,22 @@ import './store';
  */
 export const OptigrationContext = createContext();
 
-const OptigrationProvider = ({ children, pluginSettings }) => {
+const OptigrationProvider = ({ children }) => {
 	// State Hook.
-	const [settings, setSettings] = useState( {} );
+	const [scripts, setScripts] = useState( [] );
+	const [loading, setLoading] = useState( true );
 
 	useEffect(() => {
-		setSettings( pluginSettings );
-	}, [pluginSettings]);
+		setLoading( false );
+	}, [scripts]);
 
 	// Render Provider.
 	return(
 			<OptigrationContext.Provider
 				value={{
-					settings,
-					updateSettings: setSettings,
+					loading,
+					scripts,
+					setScripts,
 				}}
 			>
 				{children}
@@ -36,8 +38,4 @@ const OptigrationProvider = ({ children, pluginSettings }) => {
 };
 
 // Export withSelect for settings from API.
-export default withSelect( ( select ) => {
-	return {
-		pluginSettings: select('optigration').getSettings(),
-	};
-} )( OptigrationProvider );
+export default OptigrationProvider;

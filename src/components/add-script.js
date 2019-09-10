@@ -18,8 +18,7 @@ const AddScript = withState( {
     isOpen: false,
 } )( ( { isOpen, setState } ) => {
 	// Destructure object.
-	const { settings, updateSettings } = useContext( OptigrationContext );
-	const scripts = settings.scripts;
+	const { scripts, setScripts } = useContext( OptigrationContext );
 
 	// Field state.
 	const [name, setName] = useState();
@@ -34,12 +33,12 @@ const AddScript = withState( {
 			code
 		};
 
-		scripts.push( scriptItem );
-		updateSettings( (state) => (
-			{
-				...state,
-				scripts
-			} ) );
+		setScripts(
+			[
+				...scripts,
+				scriptItem
+			]
+		);
 		setState( { isOpen: false } );
 	};
 

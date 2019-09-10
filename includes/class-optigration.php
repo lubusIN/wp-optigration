@@ -98,8 +98,8 @@ final class Optigration {
 		// Default.
 		$default_settings =  [
 			'scripts' => [],
-			'footer'   => 'true',
 		];
+
         // Register setting.
         register_setting(
 			'optigration',

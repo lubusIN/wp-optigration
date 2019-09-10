@@ -12,6 +12,7 @@ import { Animate } from "@wordpress/components";
 /***
  * Internal dependencies.
  */
+import Loading from "./loading";
 import Empty from "./empty";
 import ScriptList from "./script-list";
 import { OptigrationContext } from "../data/context";
@@ -20,7 +21,10 @@ import { OptigrationContext } from "../data/context";
  * Render Settings Component.
  */
 const Settings = () => {
-	const context= useContext( OptigrationContext );
+	const {loading, scripts}= useContext( OptigrationContext );
+	console.log( isEmpty( scripts ) );
+
+	!  isEmpty( scripts ) && console.log( scripts );
 
 	return(
 		<Fragment>
@@ -28,9 +32,11 @@ const Settings = () => {
 				<Animate type="slide-in">
 					{
 						( {className} ) => (
-							isEmpty( context.settings.scripts ) ?
-							<Empty className={ className } /> :
-							<ScriptList />
+							loading ?
+							<Loading />:
+							isEmpty( scripts ) ?
+								<Empty className={ className } /> :
+								<ScriptList />
 						)
 					}
 				</Animate>

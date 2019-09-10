@@ -20,8 +20,7 @@ import { OptigrationContext } from "../data/context";
  * Render Script Item Component.
  */
 const ScriptItem = ( { className, index, name, script, code } ) => {
-	const { settings, updateSettings } = useContext( OptigrationContext );
-	const scripts = settings.scripts;
+	const { scripts, setScripts } = useContext( OptigrationContext );
 
 	// Fields state.
 	const [scriptName, setName] = useState( name );
@@ -30,22 +29,15 @@ const ScriptItem = ( { className, index, name, script, code } ) => {
 
 	// Update script
 	const updateScript = ( key, value ) => {
-		scripts[index][key] = value;
-		updateSettings( (state) => (
-			{
-				...state,
-				scripts
-			} ) );
-	  };
+		const updatedScripts = scripts;
+		updatedScripts[index][key] = value;
+		setScripts( updatedScripts );
+	};
 
 	// Remove event.
 	const removeScript = () => {
 		const updatedScripts = filter(scripts, (script, i) => index !== i);
-		updateSettings( (state) => (
-			{
-				...state,
-				scripts: updatedScripts
-			} ) );
+		setScripts( updatedScripts );
 	};
 
 	return(
