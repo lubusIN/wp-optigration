@@ -3,7 +3,8 @@
  */
 import { __ } from "@wordpress/i18n";
 import { useContext } from "@wordpress/element";
-import { Animate } from "@wordpress/components";
+import { withDispatch } from "@wordpress/data";
+import { Animate, Button } from "@wordpress/components";
 
 /**
  * Internal dependencies.
@@ -39,6 +40,15 @@ const ScriptList = () => {
 				</div>
 
 				<div className="flex justify-end">
+					<Button
+						isDefault
+						isLarge
+						className="mr-4"
+						onClick={
+							() => alert( 'Will save settings :)' )
+						}>
+							{ __( 'Update', 'optigration' ) }
+					</Button>
 					<AddScript/>
 				</div>
 			</div>

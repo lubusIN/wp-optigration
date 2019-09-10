@@ -56,7 +56,7 @@ const ScriptItem = ( { className, index, name, script, code } ) => {
 						label="Name"
 						help="integration service"
 						value={ scriptName }
-						onChange ={ (name) => {setName( name ); updateScript( 'name', name )} }
+						onChange ={ (name) => {setName( name ); updateScript( 'name', name );} }
 					/>
 
 					<TextControl
@@ -64,7 +64,7 @@ const ScriptItem = ( { className, index, name, script, code } ) => {
 						label="Script (optional)"
 						help="url to external script"
 						value={ scriptUrl }
-						onChange ={ (script) => setScript( script ) }
+						onChange ={ (script) => {setScript( script ); updateScript( 'script', script );} }
 					/>
 				</div>
 
@@ -73,7 +73,7 @@ const ScriptItem = ( { className, index, name, script, code } ) => {
 					label="Code"
 					help="inline javascript for integration"
 					value={ scriptCode }
-					onChange ={ (code) => setCode( code ) }
+					onChange ={ (code) => {setCode( code ); updateScript( 'code', code );} }
 				/>
 				<Button
 					isLink

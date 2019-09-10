@@ -109,6 +109,7 @@ final class Optigration {
 				'show_in_rest'      => true,
 				'sanitize_callback' => 'sanitize_text_field',
 				'default'           => json_encode( $default_settings ),
+				'description'       => 'Scripts and configrations for optigration plugin',
 			]
 		);
     }
