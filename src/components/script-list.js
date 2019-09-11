@@ -3,7 +3,6 @@
  */
 import { __ } from "@wordpress/i18n";
 import { useContext } from "@wordpress/element";
-import { withDispatch } from "@wordpress/data";
 import { Animate, Button } from "@wordpress/components";
 
 /**
@@ -12,12 +11,13 @@ import { Animate, Button } from "@wordpress/components";
 import { OptigrationContext } from "../data/context";
 import ScriptItem from './script-item';
 import AddScript from './add-script';
+import SaveSettings from './save-settings';
 
 /**
  * Render PageTitle Component.
  */
 const ScriptList = () => {
-	const { scripts, saveSettings } = useContext( OptigrationContext );
+	const { scripts } = useContext( OptigrationContext );
 
 	return(
 			<div className="bg-white flex flex-col w-full border p-8">
@@ -46,13 +46,7 @@ const ScriptList = () => {
 				</div>
 
 				<div className="flex justify-end">
-					<Button
-						isDefault
-						isLarge
-						className="mr-4"
-						onClick={ () => saveSettings() }>
-							{ __( 'Update', 'optigration' ) }
-					</Button>
+					<SaveSettings/>
 					<AddScript/>
 				</div>
 			</div>

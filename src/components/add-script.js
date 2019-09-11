@@ -14,9 +14,7 @@ import { OptigrationContext } from "../data/context";
 /**
  * Render Empty Component.
  */
-const AddScript = withState( {
-    isOpen: false,
-} )( ( { isOpen, setState } ) => {
+const AddScript = ( { isOpen, setState } ) => {
 	// Destructure object.
 	const { scripts, setScripts } = useContext( OptigrationContext );
 
@@ -90,6 +88,8 @@ const AddScript = withState( {
             </Modal>
         ) }
     </div>
-) } );
+) };
 
-export default AddScript;
+export default withState( {
+	isOpen: false,
+} )( AddScript );

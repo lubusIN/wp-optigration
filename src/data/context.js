@@ -35,7 +35,7 @@ const OptigrationProvider = ({ children }) => {
 
 	}, [loading]);
 
-	// Save settings to database.
+	// Update settings to database.
 	const saveSettings = () => {
 		apiFetch( {
 			path: '/wp/v2/settings/',
