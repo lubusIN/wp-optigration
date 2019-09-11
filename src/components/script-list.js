@@ -17,7 +17,7 @@ import AddScript from './add-script';
  * Render PageTitle Component.
  */
 const ScriptList = () => {
-	const { scripts } = useContext( OptigrationContext );
+	const { scripts, saveSettings } = useContext( OptigrationContext );
 
 	return(
 			<div className="bg-white flex flex-col w-full border p-8">
@@ -31,7 +31,13 @@ const ScriptList = () => {
 						<Animate key={index} type="slide-in">
 							{
 								({className}) => (
-									<ScriptItem className={ className } key={index} index={index} name={script.name} script={script.script} code={script.code} />
+									<ScriptItem
+										className={ className }
+										key={index}
+										index={index}
+										name={script.name}
+										script={script.script}
+										code={script.code} />
 								)
 							}
 						</Animate>
@@ -44,9 +50,7 @@ const ScriptList = () => {
 						isDefault
 						isLarge
 						className="mr-4"
-						onClick={
-							() => alert( 'Will save settings :)' )
-						}>
+						onClick={ () => saveSettings() }>
 							{ __( 'Update', 'optigration' ) }
 					</Button>
 					<AddScript/>

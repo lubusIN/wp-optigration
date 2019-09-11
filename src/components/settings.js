@@ -22,9 +22,6 @@ import { OptigrationContext } from "../data/context";
  */
 const Settings = () => {
 	const {loading, scripts}= useContext( OptigrationContext );
-	console.log( isEmpty( scripts ) );
-
-	!  isEmpty( scripts ) && console.log( scripts );
 
 	return(
 		<Fragment>
