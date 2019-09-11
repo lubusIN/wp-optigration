@@ -20,8 +20,8 @@ const ScriptList = () => {
 	const { scripts } = useContext( OptigrationContext );
 
 	return(
-			<div className="bg-white flex flex-col w-full border p-8">
-				<h2 className="flex content-center text-lg mb-6">
+			<div className="rounded bg-white flex flex-col w-full border py-8">
+				<h2 className="flex content-center text-lg mb-6 px-8">
 					{ __( 'Scripts', 'optigration') }
 				</h2>
 
@@ -45,7 +45,7 @@ const ScriptList = () => {
 				}
 				</div>
 
-				<div className="flex justify-end">
+				<div className="flex justify-end px-8 pt-8 border-t border-solid border-gray-300">
 					<SaveSettings/>
 					<AddScript/>
 				</div>

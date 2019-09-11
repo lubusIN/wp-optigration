@@ -41,7 +41,7 @@ const ScriptItem = ( { className, index, name, script, code } ) => {
 	};
 
 	return(
-			<div className={classNames( className, "w-full pb-6 mb-8 border-b border-solid border-gray-300" )}>
+			<div className={classNames( className, "w-full pb-6 mb-8 px-8 pt-8 odd:bg-gray-100" )}>
 				<div className="flex">
 					<TextControl
 						className="mb-6 w-1/4 mr-4"

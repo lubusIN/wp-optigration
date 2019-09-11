@@ -22,10 +22,10 @@
 	@apply form-textarea;
 }
 
-.components-text-control__input,
+/* .components-text-control__input,
 .components-textarea-control__input {
 	@apply bg-gray-100 !important;
-}
+} */
 
 .components-modal__header {
 	@apply bg-gray-200;
