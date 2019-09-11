@@ -59,6 +59,7 @@ final class Optigration {
 	private function init_hooks() {
 		// Set up init Hook.
 		add_action( 'rest_api_init', [ __CLASS__, 'register_settings'] );
+		add_action( 'wp_head', [ __CLASS__, 'load_scripts'] );
 
         // Modules.
         if( is_admin() ) {
@@ -112,5 +113,37 @@ final class Optigration {
 				'description'       => 'Scripts and configrations for optigration plugin',
 			]
 		);
-    }
+	}
+
+	public static function load_scripts() {
+		$scripts = '<script>
+						window.addEventListener(
+							"scroll",
+							() => setTimeout(
+								() => {
+									// Integration Codes
+									%s
+								}, 600),
+								{ once: true }
+						);
+				  </script>';
+
+
+		printf( $scripts, self::get_scripts() );
+	}
+
+	public static function get_scripts() {
+		$settings = json_decode( get_option( 'optigration', [] ) );
+		$code = '';
+		foreach ($settings->scripts as $script) {
+			$script_code  = '<!-- Optigration -->' . PHP_EOL;
+			$script_code .= '<!-- Start %1$s -->' . PHP_EOL;
+			$script_code .= '%2$s' . PHP_EOL;
+			$script_code .= '<!-- End %1$s -->';
+
+			$code .= sprintf( $script_code, $script->name, $script->code );
+		}
+
+		return $code;
+	}
 }
