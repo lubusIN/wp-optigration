@@ -58,13 +58,13 @@ final class Optigration {
 	 */
 	private function init_hooks() {
 		// Set up init Hook.
-		add_action( 'rest_api_init', [ __CLASS__, 'register_settings'] );
-		add_action( 'wp_head', [ __CLASS__, 'load_scripts'] );
+		add_action( 'rest_api_init', [ __CLASS__, 'register_settings' ] );
+		add_action( 'wp_head', [ __CLASS__, 'load_scripts' ] );
 
-        // Modules.
-        if( is_admin() ) {
-            Settings::init();
-        }
+		// Modules.
+		if ( is_admin() ) {
+			Settings::init();
+		}
 	}
 
 	/**
@@ -91,30 +91,35 @@ final class Optigration {
 	}
 
 	/**
-     * Register settings
-     *
-     * @return void
-     */
-    public static function register_settings() {
+	 * Register settings
+	 *
+	 * @return void
+	 */
+	public static function register_settings() {
 		// Default.
-		$default_settings =  [
+		$default_settings = [
 			'scripts' => [],
 		];
 
-        // Register setting.
-        register_setting(
+		// Register setting.
+		register_setting(
 			'optigration',
 			'optigration',
 			[
 				'type'              => 'string',
 				'show_in_rest'      => true,
 				'sanitize_callback' => 'sanitize_text_field',
-				'default'           => json_encode( $default_settings ),
+				'default'           => wp_json_encode( $default_settings ),
 				'description'       => 'Scripts and configrations for optigration plugin',
 			]
 		);
 	}
 
+	/**
+	 * Load integration scripts
+	 *
+	 * @return void
+	 */
 	public static function load_scripts() {
 		$scripts = '<script>
 						window.addEventListener(
@@ -128,15 +133,21 @@ final class Optigration {
 						);
 				  </script>';
 
-
+		// phpcs:ignore
 		printf( $scripts, self::get_scripts() );
 	}
 
+	/**
+	 * Get scripts
+	 *
+	 * @return string
+	 */
 	public static function get_scripts() {
-		$settings = json_decode( get_option( 'optigration', [] ) );
-		$code = '';
-		foreach ($settings->scripts as $script) {
-			$script_code  = '<!-- Optigration -->' . PHP_EOL;
+		$settings    = json_decode( get_option( 'optigration', [] ) );
+		$code        = '';
+		$script_code = '<!-- Optigration -->' . PHP_EOL;
+
+		foreach ( $settings->scripts as $script ) {
 			$script_code .= '<!-- Start %1$s -->' . PHP_EOL;
 			$script_code .= '%2$s' . PHP_EOL;
 			$script_code .= '<!-- End %1$s -->';

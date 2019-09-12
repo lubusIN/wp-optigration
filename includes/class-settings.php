@@ -8,7 +8,7 @@
  * @see   https://www.lubus.in
  *
  * @copyright 2019 LUBUS
- * @package   Munim
+ * @package   Optigration
  */
 
 namespace LubusIN\Optigration;
@@ -23,26 +23,26 @@ class Settings {
 	 * @return void
 	 */
 	public static function init() {
-        // Setup
-        add_action( 'admin_enqueue_scripts', [ __CLASS__, 'register_assets' ] );
-        add_action( 'admin_menu', [ __CLASS__, 'add_menu'] );
-    }
+		// Setup.
+		add_action( 'admin_enqueue_scripts', [ __CLASS__, 'register_assets' ] );
+		add_action( 'admin_menu', [ __CLASS__, 'add_menu' ] );
+	}
 
-    /**
+	/**
 	 * Register Scripts.
-     *
-     * @return void
+	 *
+	 * @return void
 	 */
 	public static function register_assets() {
-		// Bailout of not on plugin page(s).
-		$screen = get_current_screen();
+		// Bailout if not on plugin page(s).
+		$screen       = get_current_screen();
 		$plugin_pages = [ 'settings_page_optigration' ];
 
-		if ( ! in_array( $screen->id , $plugin_pages ) ) {
+		if ( ! in_array( $screen->id, $plugin_pages, true ) ) {
 			return;
 		}
 
-		// Scripts
+		// Scripts.
 		wp_register_script(
 			'optigration-manifest',
 			OPTIGRATION_PLUGIN_URL . 'assets/manifest.js',
@@ -55,7 +55,7 @@ class Settings {
 		wp_register_script(
 			'optigration-vendor',
 			OPTIGRATION_PLUGIN_URL . 'assets/vendor.js',
-			['optigration-manifest'],
+			[ 'optigration-manifest' ],
 			filemtime( OPTIGRATION_PLUGIN_DIR . 'assets/vendor.js' ),
 			true
 		);
@@ -78,7 +78,7 @@ class Settings {
 		);
 		wp_enqueue_script( 'optigration' );
 
-        // Styles.
+		// Styles.
 		wp_register_style(
 			'optigration-style',
 			OPTIGRATION_PLUGIN_URL . 'assets/style.css',
@@ -86,30 +86,30 @@ class Settings {
 			filemtime( OPTIGRATION_PLUGIN_DIR . 'assets/style.css' )
 		);
 		wp_enqueue_style( 'optigration-style' );
-    }
+	}
 
-    /**
-     * Add settings menu to WP settings.
-     *
-     * @return void
-     */
-    public static function add_menu() {
-        add_submenu_page(
-            'options-general.php',
-            __( 'Optigration' , 'optigration' ),
-            __( 'Optigration' , 'optigration' ),
-            'manage_options',
-            'optigration',
-            [ __CLASS__, 'render_page' ]
-        );
-    }
+	/**
+	 * Add settings menu to WP settings.
+	 *
+	 * @return void
+	 */
+	public static function add_menu() {
+		add_submenu_page(
+			'options-general.php',
+			__( 'Optigration', 'optigration' ),
+			__( 'Optigration', 'optigration' ),
+			'manage_options',
+			'optigration',
+			[ __CLASS__, 'render_page' ]
+		);
+	}
 
-    /**
-     * Render settings page
-     *
-     * @return void
-     */
-    public static function render_page() {
-        require_once 'views/settings.php';
-    }
+	/**
+	 * Render settings page
+	 *
+	 * @return void
+	 */
+	public static function render_page() {
+		require_once 'views/settings.php';
+	}
 }

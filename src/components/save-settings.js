@@ -1,14 +1,14 @@
 /**
  * WordPress dependencies.
  */
-import { useContext, useState } from "@wordpress/element";
-import { __ } from "@wordpress/i18n";
+import { useContext, useState } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
 
 /**
  * Internal dependencies.
  */
-import { OptigrationContext } from "../data/context";
+import { OptigrationContext } from '../data/context';
 
 /**
  * Render Empty Component.
@@ -28,7 +28,7 @@ const SaveSettings = () => {
 	};
 
 	// Render form.
-	return(
+	return (
 		<Button
 			isDefault
 			isLarge
@@ -38,6 +38,7 @@ const SaveSettings = () => {
 			onClick={ saving ? undefined : update }>
 			{ __( 'Update', 'optigration' ) }
 		</Button>
-	) };
+	);
+};
 
 export default SaveSettings;

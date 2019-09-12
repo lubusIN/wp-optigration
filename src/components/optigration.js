@@ -1,7 +1,7 @@
 /***
  * Internal dependencies.
  */
-import OptigrationProvider from "../data/context";
+import OptigrationProvider from '../data/context';
 import ErrorBoundry from './error-boundry';
 import PageTitle from './page-title';
 import Settings from './settings';
@@ -10,11 +10,11 @@ import Settings from './settings';
  * Render Optigration Component.
  */
 const Optigration = () => {
-	return(
+	return (
 		<ErrorBoundry>
 			<OptigrationProvider>
-				<PageTitle/>
-				<Settings/>
+				<PageTitle />
+				<Settings />
 			</OptigrationProvider>
 		</ErrorBoundry>
 	);

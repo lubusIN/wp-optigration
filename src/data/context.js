@@ -1,12 +1,7 @@
 /**
- * External dependencies.
- */
-import { isEmpty } from "lodash";
-
-/**
  * WordPress dependencies.
  */
-import { useState, useEffect, createContext } from "@wordpress/element";
+import { useState, useEffect, createContext } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
 
 /**
@@ -19,43 +14,42 @@ import './store';
  */
 export const OptigrationContext = createContext();
 
-const OptigrationProvider = ({ children }) => {
+const OptigrationProvider = ( { children } ) => {
 	// State Hook.
-	const [loading, setLoading] = useState( true );
-	const [scripts, setScripts] = useState( [] );
+	const [ loading, setLoading ] = useState( true );
+	const [ scripts, setScripts ] = useState( [] );
 
 	// Side effect to fetch data.
-	useEffect(() => {
+	useEffect( () => {
 		apiFetch( { path: '/wp/v2/settings/' } )
-		.then( (settings) => {
-			const optigration = JSON.parse( settings.optigration );
-			setScripts( optigration.scripts );
-			setLoading( false )
-		});
-
-	}, [loading]);
+			.then( ( settings ) => {
+				const optigration = JSON.parse( settings.optigration );
+				setScripts( optigration.scripts );
+				setLoading( false );
+			} );
+	}, [ loading ] );
 
 	// Update settings to database.
 	const saveSettings = () => {
 		apiFetch( {
 			path: '/wp/v2/settings/',
 			method: 'POST',
-			data: { optigration : JSON.stringify( { scripts } )},
+			data: { optigration: JSON.stringify( { scripts } ) },
 		} );
 	};
 
 	// Render Provider.
-	return(
-			<OptigrationContext.Provider
-				value={{
-					loading,
-					scripts,
-					setScripts,
-					saveSettings,
-				}}
-			>
-				{children}
-			</OptigrationContext.Provider>
+	return (
+		<OptigrationContext.Provider
+			value={ {
+				loading,
+				scripts,
+				setScripts,
+				saveSettings,
+			} }
+		>
+			{ children }
+		</OptigrationContext.Provider>
 	);
 };
 

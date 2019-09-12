@@ -1,15 +1,15 @@
 /**
  * WordPress dependencies.
  */
- import { G, Path, SVG } from '@wordpress/components';
+import { G, Path, SVG } from '@wordpress/components';
 
 /**
  * Icons.
  */
 
- // Plugin Page Icon.
+// Plugin Page Icon.
 export const PluginIcon = ( { className } ) => {
-	return(
+	return (
 		<SVG className={ className } viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg">
 			<G id="Page-1" stroke="none" strokeWidth="1" fillRule="evenodd">
 				<G id="icon-shape">
@@ -22,7 +22,7 @@ export const PluginIcon = ( { className } ) => {
 
 // Add Icon.
 export const AddIcon = ( { className } ) => {
-	return(
+	return (
 		<SVG className={ className } viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg">
 			<G id="Page-1" stroke="none" strokeWidth="1" fillRule="evenodd">
 				<G id="icon-shape">

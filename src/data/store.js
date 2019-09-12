@@ -2,7 +2,7 @@
  * WordPress dependencies.
  */
 import apiFetch from '@wordpress/api-fetch';
-import { registerStore } from "@wordpress/data";
+import { registerStore } from '@wordpress/data';
 
 /**
  * Optigration store.
@@ -14,22 +14,22 @@ const actions = {
 		};
 	},
 	setSettings( settings ) {
-        return {
-            type: 'SET_SETTINGS',
-            settings
-        };
+		return {
+			type: 'SET_SETTINGS',
+			settings,
+		};
 	},
-    fetchFromAPI( path ) {
-        return {
-            type: 'FETCH_FROM_API',
-            path,
-        };
-    },
+	fetchFromAPI( path ) {
+		return {
+			type: 'FETCH_FROM_API',
+			path,
+		};
+	},
 };
 
 registerStore( 'optigration', {
-    reducer( state = {}, action ) {
-        switch ( action.type ) {
+	reducer( state = {}, action ) {
+		switch ( action.type ) {
 			case 'GET_SETTINGS':
 				return {
 					type: 'GET_SETTINGS',
@@ -41,36 +41,36 @@ registerStore( 'optigration', {
 				};
 		}
 
-        return state;
+		return state;
 	},
 
-	initialState:  {
+	initialState: {
 		settings: {
 			scripts: [],
-			footer: 'false'
+			footer: 'false',
 		},
 	},
 
-    actions,
+	actions,
 
-    selectors: {
-        getSettings( state ) {
+	selectors: {
+		getSettings( state ) {
 			const { settings } = state;
-            return settings;
-        },
-    },
-
-    controls: {
-        FETCH_FROM_API( action ) {
-            return apiFetch( { path: action.path } );
+			return settings;
 		},
-    },
+	},
 
-    resolvers: {
-        * getSettings() {
-            const path = '/wp/v2/settings/';
+	controls: {
+		FETCH_FROM_API( action ) {
+			return apiFetch( { path: action.path } );
+		},
+	},
+
+	resolvers: {
+		* getSettings() {
+			const path = '/wp/v2/settings/';
 			const settings = yield actions.fetchFromAPI( path );
-            return actions.setSettings( JSON.parse( settings.optigration ) );
+			return actions.setSettings( JSON.parse( settings.optigration ) );
 		},
-    },
+	},
 } );
