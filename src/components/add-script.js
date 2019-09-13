@@ -4,7 +4,6 @@
 import { useContext, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { Button, Modal, TextControl, TextareaControl } from '@wordpress/components';
-import { withState } from '@wordpress/compose';
 
 /**
  * Internal dependencies.
@@ -14,9 +13,12 @@ import { OptigrationContext } from '../data/context';
 /**
  * Render Empty Component.
  */
-const AddScript = ( { isOpen, setState } ) => {
+const AddScript = () => {
 	// Destructure object.
 	const { scripts, setScripts } = useContext( OptigrationContext );
+
+	// Modal state.
+	const [ isOpen, setIsOpen ] = useState( false );
 
 	// Field state.
 	const [ name, setName ] = useState();
@@ -37,7 +39,7 @@ const AddScript = ( { isOpen, setState } ) => {
 				scriptItem,
 			]
 		);
-		setState( { isOpen: false } );
+		setIsOpen( false );
 	};
 
 	// Render form.
@@ -46,14 +48,14 @@ const AddScript = ( { isOpen, setState } ) => {
 			<Button
 				isPrimary
 				isLarge
-				onClick={ () => setState( { isOpen: true } ) }>
+				onClick={ () => setIsOpen( true ) }>
 				{ __( 'Add script', 'optigration' ) }
 			</Button>
 			{ isOpen && (
 				<Modal
 					title="Add script"
 					className="rounded-lg shadow-2xl"
-					onRequestClose={ () => setState( { isOpen: false } ) }>
+					onRequestClose={ () => setIsOpen( false ) }>
 
 					<TextControl
 						className="mb-6"
@@ -77,7 +79,7 @@ const AddScript = ( { isOpen, setState } ) => {
 					/>
 
 					<div className="flex justify-end bg-gray-200 py-4 px-6 -mx-4 -mb-4">
-						<Button isDefault onClick={ () => setState( { isOpen: false } ) }>
+						<Button isDefault onClick={ () => setIsOpen( false ) }>
 					Cancel
 						</Button>
 						<Button className="ml-4" isPrimary onClick={ () => addScript() }>
@@ -91,6 +93,4 @@ const AddScript = ( { isOpen, setState } ) => {
 	);
 };
 
-export default withState( {
-	isOpen: false,
-} )( AddScript );
+export default AddScript;

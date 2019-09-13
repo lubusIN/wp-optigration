@@ -30,8 +30,8 @@ const OptigrationProvider = ( { children } ) => {
 	}, [ loading ] );
 
 	// Update settings to database.
-	const saveSettings = () => {
-		apiFetch( {
+	const saveSettings = async () => {
+		await apiFetch( {
 			path: '/wp/v2/settings/',
 			method: 'POST',
 			data: { optigration: JSON.stringify( { scripts } ) },

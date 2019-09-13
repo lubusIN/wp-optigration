@@ -23,7 +23,7 @@ const SaveSettings = () => {
 	// Save event.
 	const update = async () => {
 		setSaving( true );
-		saveSettings();
+		await saveSettings();
 		setSaving( false );
 	};
 
